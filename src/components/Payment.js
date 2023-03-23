@@ -294,9 +294,20 @@ function Payment() {
       setIsModalOpen(false);
     };
   
-  // modal contents
+  // modal form contents
+  const [formData, setFormData] = useState({
+    name : '',
+    details : '',
+    type : '',
+    status : '',
+    date : '',
+    amount : ''
 
- 
+  })
+
+      const handleChange = (event) => {
+        setFormData({...formData, [event.target.name]: event.target.value})
+      }
   
 
   return (
@@ -325,7 +336,7 @@ function Payment() {
                     <Button type="primary" onClick={showModal}>
                     <PlusOutlined /> Add Payment
       </Button>
-      <Modal title="Add Payment" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      <Modal title="Add Payment" open={isModalOpen} onOk={handleOk } state={formData} onCancel={handleCancel}>
    
 
 
@@ -337,14 +348,14 @@ function Payment() {
     >
      
       <Form.Item label="Name">
-        <Input placeholder='Enter Name'/>
+        <Input placeholder='Enter Name' onChange={handleChange} />
       </Form.Item>
 
       <Form.Item label="Details">
-        <Input placeholder='Payment Details'/>
+        <Input placeholder='Payment Details' onChange={handleChange} />
       </Form.Item>
     
-      <Form.Item label="Type">
+      <Form.Item label="Type" onChange={handleChange} >
         <TreeSelect
           treeData={[
           
@@ -356,7 +367,7 @@ function Payment() {
         />
       </Form.Item>
 
-      <Form.Item label="Status">
+      <Form.Item label="Status" onChange={handleChange} > 
       <TreeSelect
           treeData={[
             { title: 'Paid', value: 'pai' },
@@ -367,12 +378,12 @@ function Payment() {
         />
       </Form.Item>
 
-      <Form.Item label="Date">
+      <Form.Item label="Date" onChange={handleChange} >
         <DatePicker />
       </Form.Item>
 
       <Form.Item label="Amount">
-        <InputNumber placeholder='Amount'/>
+        <InputNumber placeholder='Amount' onChange={handleChange} />
       </Form.Item>
     
     </Form>
@@ -393,9 +404,6 @@ function Payment() {
   </Row>
 
           </div>
-
-        
-         
 
         </div>
       

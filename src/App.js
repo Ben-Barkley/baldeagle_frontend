@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // import './App.css';
 // import './Style.css'
-import Home from './components/Home';
+// import Home from './components/Home';
 import Invoice from './components/Invoice';
 // import Navbar from './components/Navbar';
 import Payment from './components/Payment';
@@ -27,10 +27,11 @@ function App() {
     
 
      <Routes>
-     <Route path="/login" element={ <LogIn/>}/>
-      <Route path="/" element={ <Home/>}/>
-      <Route path="/invoice/:id" element={ <Invoice/>}/>
+     <Route path="/" element={ <LogIn/>}/>
+      {/* <Route path="/" element={ <Home/>}/> */}
       <Route path="/payment" element={ <Payment />}/>
+      <Route path="/invoice/:id" element={ <Invoice/>}/>
+      
 
      </Routes>
 
