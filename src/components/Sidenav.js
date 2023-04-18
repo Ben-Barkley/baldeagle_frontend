@@ -56,76 +56,73 @@ function Sidenav() {
 
   return (
     <div>
-          {/* <div class={openNav ? "open sidebar" : "sidebar"}> */}
-          <div class= "sidebar">
+          {/* <div className={openNav ? "open sidebar" : "sidebar"}> */}
+          <div className= "sidebar">
     <div className='logo-details'>
-      {/* <i class='bx bxl-c-plus-plus icon'></i> */}
+      {/* <i className='bx bxl-c-plus-plus icon'></i> */}
       <img src={logo4} alt="" />
-        {/* <div class="logo_name">Crater 365</div> */}
-        {/* <i class='bx bx-menu' id="btn" ></i> */}
+        {/* <div className="logo_name">Crater 365</div> */}
+        {/* <i className='bx bx-menu' id="btn" ></i> */}
         {/* <i className='bx bx-menu' id='btn' onClick={toggleSideNav}><FontAwesomeIcon icon={faBars} color="white"/> </i> */}
         {/* <i className='bx bx-menu' id='btn' ><FontAwesomeIcon icon={faBars} color="white"/> </i> */}
     </div>
-    <ul class="nav-list">
+    <ul className="nav-list">
      
       <li>
         <a href="#">
         
           <i className='bx bx-grid-alt'><FontAwesomeIcon icon={faHouseChimney} color="white"/> </i>
-          <span class="links_name">Dashboard</span>
+          <span className="links_name">Dashboard</span>
         </a>
-         <span class="tooltip">Dashboard</span>
+         <span className="tooltip">Dashboard</span>
       </li>
       <li>
        <a href="#">
        
          <i className='bx bx-user'><FontAwesomeIcon icon={faHandHoldingHand} color="white"/> </i>
-         <span class="links_name">HR Dashboard</span>
+         <span className="links_name">HR Dashboard</span>
        </a>
-       <span class="tooltip">HR Dashboard</span>
+       <span className="tooltip">HR Dashboard</span>
      </li>
 
      <Link to= "/payment">
      <li >
-       <a>
          <i className='bx bx-user'><FontAwesomeIcon icon={faReceipt} color="white"/> </i>
        
-        <span class="links_name">Finance Dashboard</span>  
-       </a>
+        <span className="links_name">Finance Dashboard</span>  
     
-       <span class="tooltip">Finance Dashboard</span>
-       
+       <span className="tooltip">Finance Dashboard</span>
      </li>
      </Link>
  
      <li>
        <a href="#">
          <i className='bx bx-chat'><FontAwesomeIcon icon={faCalendarTimes} color="white"/> </i>
-         <span class="links_name">Time Mgt System</span>
+         <span className="links_name">Time Mgt System</span>
        </a>
-       <span class="tooltip">Time Mgt System</span>
+       <span className="tooltip">Time Mgt System</span>
      </li>
   
      <li>
        <a href="#">
          <i className='bx bx-folder'><FontAwesomeIcon icon={faHandsHelping} color="white"/> </i>
-         <span class="links_name">Help Desk</span>
+         <span className="links_name">Help Desk</span>
        </a>
-       <span class="tooltip">Help Desk</span>
+       <span className="tooltip">Help Desk</span>
      </li>
    
    
      <li>
        <a href="#">
-         {/* <i class='bx bx-cog' ></i> */}
+         {/* <i className='bx bx-cog' ></i> */}
          <i className='bx bx-cog'><FontAwesomeIcon icon={faCog} color="white"/> </i>
-         <span class="links_name">Setting</span>
+         <span className="links_name">Setting</span>
        </a>
-       <span class="tooltip">Setting</span>
+       <span className="tooltip">Setting</span>
      </li>
     
-     <li class="profile">
-         <div class="profile-details">
+     <li className="profile">
+         <div className="profile-details">
            {/* <img src="profile.jpg" alt="profileImg"> */}
            <div className="name_job">
              <div className="name">User1</div>

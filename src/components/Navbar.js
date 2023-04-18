@@ -3,44 +3,13 @@ import './Style.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faAssistiveListeningSystems, faBars, faCalendarTimes, faHandHoldingHand, faHouseChimney, faIdCard, faReceipt} from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
-import { Space, Table, Tag } from 'antd';
-import { Card, Button } from 'antd';
-import { PlusOutlined} from '@ant-design/icons';
-import { AudioOutlined } from '@ant-design/icons';
-import { Input } from 'antd';
-import { Col, Row } from 'antd';
-// dropdown side nav
-import { DownOutlined, SmileOutlined } from '@ant-design/icons';
-// import type { MenuProps } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
 import { Dropdown} from 'antd';
-// modal 
-import  { useState } from 'react';
-import {  Modal } from 'antd';
-
 import logo4 from '../images/logo4.png'
-
-
-
-
-
-
-
-
 
 
 function Navbar() {
 
-  
-  
- 
-
-    // dropdown side nav
-    
-
-    
-   
-  
-    
     const items = [
       {
         key: '1',
@@ -82,11 +51,7 @@ function Navbar() {
       },
      
     ];
-    
- 
-  
-    
-  
+
 
   return (
     <div>

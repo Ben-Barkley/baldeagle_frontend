@@ -236,17 +236,14 @@ function Payment() {
        
           
           <Link to= {`/invoice/${record.key}`}>
-          
-          <a target="_blank" rel="noopener noreferrer" href="blank" style={{fontWeight: '500'}}>
           View
-         </a>
-         
+          {/* <a target="_blank" rel="noopener noreferrer" href="blank" style={{fontWeight: '500'}}>
+          
+         </a> */}
           </Link> 
-      
-    
-      
-
-          <a onClick={() => handleDelete(record.key)}>Delete</a> 
+           
+{/* 
+          <a onClick={() => handleDelete(record.key)}>Delete</a>  */}
           
           
           
@@ -315,8 +312,8 @@ function Payment() {
     <div>
          <Sidenav />
   
-    <div class="content">
-      <div class="card">
+    <div className="content">
+      <div className="card">
         <div className="payment">
       
 
@@ -389,56 +386,27 @@ function Payment() {
     </Form>
       </Modal>
                            
-            </Space>
+        </Space>
             
     </div>
     </Col>
-    <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-      
+    <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}> 
     </Col>
-    <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-    <Space direction="vertical">
-    <Search placeholder="search for result" onChange={(e) => setSearch(e.target.value)} onSearch={onSearch} enterButton />  
-    </Space>
-    </Col>
-  </Row>
-
+      <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+      <Space direction="vertical">
+      <Search placeholder="search for result" onChange={(e) => setSearch(e.target.value)} onSearch={onSearch} enterButton />  
+      </Space>
+      </Col>
+    </Row>
           </div>
-
         </div>
-      
       </div>
-      <div class="card">
-     
+      <div className="card">
       </div>
-      {/* {dataSource.filter((item) => {
-        return search.toLowerCase() === '' ? item : item.name.toLowerCase().includes(search)
-      }).map((item) => */}
           <Card style={{ width: '100%' }}>
-          <Table 
-                columns={columns }
-              
-                dataSource={dataSource} >
-
-
-                </Table>
-
-               
+          <Table columns={columns } dataSource={dataSource}></Table> 
       </Card> 
-       {/* )} */}
-
     </div>
-
-    
-
-
-
-  
-      
-    
-
-
-    
     </div>
   )
 }
