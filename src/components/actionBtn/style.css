@@ -1,0 +1,23 @@
+.btn-wrapper {
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+    height: 60px;
+    width: fit-content;
+}
+.actionBtn {
+    width: 150px;
+    height: 70px;
+    border: 1px solid red;
+    text-align: center;
+    padding-block: 20px;
+}
+
+.actions {
+    display: none;
+}
+
+.open {
+    display: flex;
+    gap: 10px;
+}

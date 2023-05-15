@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
 import './Style.css'
 import logo2 from '../images/logo2.jpg'
-import logo5 from '../images/logo5.png'
-import frontImg from '../images/frontImg.jpg'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
-import { Col, Row } from 'antd';
 import AuthService from "../services/auth"
 import { setToken } from "../services/invoice"
 import { useDispatch } from 'react-redux'
@@ -34,10 +30,10 @@ function LogIn() {
     try {
       const response = await AuthService.login(credentials)
       
-      setToken(response.token)
+      setToken(response.access_token)
       const user = {
         email: email,
-        token: response.token
+        tokens: response
       }
       setEmail('')
       setPassword('')

@@ -4,6 +4,8 @@ import data from './Data'
 import './Style.css'
 import Sidenav from './Sidenav';
 import logo5 from '../images/logo5.png'
+import { useSelector } from 'react-redux';
+import ActionBtn from './actionBtn/ActionBtn';
 
 
 
@@ -11,31 +13,51 @@ import logo5 from '../images/logo5.png'
 function Invoice() {
   const params = useParams();
   
+  const invoiceItem = useSelector(state => state.invoice.find(item => item.id === parseInt(params.id)))
+  const user = useSelector(state => state.user)
+  
+  const findAction = (status) => {
+    switch (status) {
+      case "START":
+        if(user.email === invoiceItem.authorizer) {
+          console.log("review")
+          return "Review"
+        } else {
+          return null
+        }
+        
+      case "REVIEWED":
+        if(user.email === invoiceItem.approver) {
+          console.log("approve")
+          return "Approve"
+        } else {
+          return null
+        }
+      case "PAID":
+        return null
+      default:
+        break;
+    }
+  }
 
-  const invoiceItem = data.find(item => item.id === params.id)
-  console.log(invoiceItem, data, params.id)
+  const action = findAction(invoiceItem.meta.status)
+
+  
   return (
     
         <div className="contentz"  >
   
          <Sidenav />
   
-    
-        
           <div className="card" >
-      
       
         <h2>Invoice</h2>
        
         <div className="tm_container">
-    
-         
+
         <div className="tm_invoice_wrap">
-            <div className="tm_invoice tm_style1 tm_type1" id="tm_download_section">
-            
-            <div class="tm_invoice_in">
-           
-            
+            <div className="tm_invoice tm_style1 tm_type1" id="tm_download_section"> 
+            <div class="tm_invoice_in">  
           <div class="tm_invoice_head tm_top_head tm_mb15 tm_align_center">
             <div class="tm_invoice_left">
             <img src={logo5} alt="" />
@@ -46,10 +68,10 @@ function Invoice() {
             <div class="tm_shape_bg tm_accent_bg tm_mobile_hide"></div>
           </div>
           <div class="tm_invoice_info tm_mb25">
-            <div class="tm_card_note tm_mobile_hide"><b class="tm_primary_color">Payment Method: </b>{invoiceItem.paymentType}</div>
+            <div class="tm_card_note tm_mobile_hide"><b class="tm_primary_color">Payment Method: </b>{invoiceItem.paymentMode}</div>
             <div class="tm_invoice_info_list tm_white_color">
-              <p class="tm_invoice_number tm_m0">Invoice No: <b>#LL93784</b></p>
-              <p class="tm_invoice_date tm_m0">Date: <b>{invoiceItem.date}</b></p>
+              <p class="tm_invoice_number tm_m0">Invoice No: <b>{invoiceItem.voucher_no}</b></p>
+              <p class="tm_invoice_date tm_m0">Date: <b>{invoiceItem.meta.initiatedTime.join('-')}</b></p>
             </div>
             <div class="tm_invoice_seperator tm_accent_bg"></div>
             </div>
@@ -59,10 +81,7 @@ function Invoice() {
               
               <p>
               {invoiceItem.department}
-                
-               
-              </p>
-              
+              </p> 
             </div>
             <div class="tm_invoice_right tm_text_right">
               <p class="tm_mb2"><b class="tm_primary_color">Pay To:</b></p>
@@ -80,51 +99,31 @@ function Invoice() {
                 <table>
                   <thead>
                     <tr class="tm_accent_bg">
-                      <th class="tm_width_3 tm_semi_bold tm_white_color">Item</th>
-                      <th class="tm_width_4 tm_semi_bold tm_white_color">Description</th>
+                      <th class="tm_width_3 tm_semi_bold tm_white_color">Name</th>
                       <th class="tm_width_2 tm_semi_bold tm_white_color">Price</th>
                       <th class="tm_width_1 tm_semi_bold tm_white_color">Qty</th>
                       <th class="tm_width_2 tm_semi_bold tm_white_color tm_text_right">Total</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      {/* <td class="tm_width_3">1. Website Design</td> */}
-                      <td class="tm_width_3">{invoiceItem.item}</td>
-                      <td class="tm_width_4">{invoiceItem.desc}</td>
-                      <td class="tm_width_2">{invoiceItem.amount}</td>
-                      <td class="tm_width_1">{invoiceItem.qty}</td>
-                      <td class="tm_width_2 tm_text_right">{invoiceItem.total}</td>
-                    </tr>
-                    {/* <tr>
-                      <td class="tm_width_3">2. Web Development</td>
-                      <td class="tm_width_4">Convert pixel-perfect frontend and make it dynamic</td>
-                      <td class="tm_width_2">#600</td>
-                      <td class="tm_width_1">1</td>
-                      <td class="tm_width_2 tm_text_right">#600</td>
-                    </tr>
-                    <tr>
-                      <td class="tm_width_3">3. App Development</td>
-                      <td class="tm_width_4">Android & Ios Application Development</td>
-                      <td class="tm_width_2">#200</td>
-                      <td class="tm_width_1">2</td>
-                      <td class="tm_width_2 tm_text_right">#400</td>
-                    </tr>
-                    <tr>
-                      <td class="tm_width_3">4. Digital Marketing</td>
-                      <td class="tm_width_4">Facebook, Youtube and Google Marketing</td>
-                      <td class="tm_width_2">#100</td>
-                      <td class="tm_width_1">3</td>
-                      <td class="tm_width_2 tm_text_right">#300</td>
-                    </tr> */}
+                    {
+                      invoiceItem.particularsList.map(item => {
+                        return (<tr>
+                        <td class="tm_width_3">{item.name}</td>
+                        <td class="tm_width_2">{item.price}</td>
+                        <td class="tm_width_1">{item.quantity}</td>
+                        <td class="tm_width_2 tm_text_right">{item.price*item.quantity}</td>
+                        </tr>)
+                      })
+                    } 
                   </tbody>
                   </table>
                   </div>
                 </div>
                 <div class="tm_invoice_footer tm_border_top tm_mb15 tm_m0_md">
                 <div class="tm_left_footer">
-                <p class="tm_mb2"><b class="tm_primary_color">Payment status:</b></p>
-                <p class="tm_m0">{invoiceItem.status}</p>
+                <p class="tm_mb2"><b class="tm_primary_color">Payment status: </b></p>
+                <p class="tm_m0">{invoiceItem.meta.status}</p>
                 </div>
                 <div class="tm_right_footer">
                 <table class="tm_mb15">
@@ -139,7 +138,7 @@ function Invoice() {
                     </tr> */}
                     <tr class="tm_accent_bg">
                       <td class="tm_width_3 tm_border_top_0 tm_bold tm_f16 tm_white_color">Grand Total	</td>
-                      <td class="tm_width_3 tm_border_top_0 tm_bold tm_f16 tm_white_color tm_text_right">{invoiceItem.total}</td>
+                      <td class="tm_width_3 tm_border_top_0 tm_bold tm_f16 tm_white_color tm_text_right">{invoiceItem.totalAmount}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -178,7 +177,9 @@ function Invoice() {
              </span>
             <span class="tm_btn_text">Download</span>
             </button>
+          
         </div>
+        {action != null ? <ActionBtn action={action} invoice={invoiceItem}/> : null}
         </div>
         </div>
         </div>
