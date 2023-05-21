@@ -66,71 +66,69 @@ function Sidenav() {
         {/* <i className='bx bx-menu' id='btn' onClick={toggleSideNav}><FontAwesomeIcon icon={faBars} color="white"/> </i> */}
         {/* <i className='bx bx-menu' id='btn' ><FontAwesomeIcon icon={faBars} color="white"/> </i> */}
     </div>
+    <div className="profile-details">
+           {/* <img src="profile.jpg" alt="profileImg"> */}
+           <div className="name_job">
+             <div className="name">Ragnar Lothbrok</div>
+             <div className="job">Web designer</div>
+           </div>
+         </div>
     <ul className="nav-list">
      
       <li>
         <a href="#">
         
-          <i className='bx bx-grid-alt'><FontAwesomeIcon icon={faHouseChimney} color="white"/> </i>
-          <span className="links_name">Dashboard</span>
+          
+          <span className="links_name"><i className='bx bx-grid-alt'><FontAwesomeIcon icon={faHouseChimney} color="white"/> </i>Dashboard</span>
         </a>
-         <span className="tooltip">Dashboard</span>
+         {/* <span className="tooltip"><i className='bx bx-grid-alt'><FontAwesomeIcon icon={faHouseChimney} color="white"/> </i>Dashboard</span> */}
       </li>
       <li>
        <a href="#">
        
-         <i className='bx bx-user'><FontAwesomeIcon icon={faHandHoldingHand} color="white"/> </i>
-         <span className="links_name">HR Dashboard</span>
+         
+         <span className="links_name"><i className='bx bx-user'><FontAwesomeIcon icon={faHandHoldingHand} color="white"/> </i>HR Dashboard</span>
        </a>
-       <span className="tooltip">HR Dashboard</span>
+       {/* <span className="tooltip"><i className='bx bx-user'><FontAwesomeIcon icon={faHandHoldingHand} color="white"/> </i>HR Dashboard</span> */}
      </li>
 
      <Link to= "/payment">
-     <li >
-         <i className='bx bx-user'><FontAwesomeIcon icon={faReceipt} color="white"/> </i>
-       
-        <span className="links_name">Finance Dashboard</span>  
-    
-       <span className="tooltip">Finance Dashboard</span>
+        <li>
+       <a href="#">
+         <span className="links_name"><i className='bx bx-user'><FontAwesomeIcon icon={faReceipt} color="white"/> </i>Finance Dashboard</span>
+       </a>
+       {/* <span className="tooltip"><i className='bx bx-user'><FontAwesomeIcon icon={faReceipt} color="white"/> </i>Finance Dashboard</span> */}
      </li>
      </Link>
  
      <li>
        <a href="#">
-         <i className='bx bx-chat'><FontAwesomeIcon icon={faCalendarTimes} color="white"/> </i>
-         <span className="links_name">Time Mgt System</span>
+         
+         <span className="links_name"><i className='bx bx-chat'><FontAwesomeIcon icon={faCalendarTimes} color="white"/> </i>Time Mgt System</span>
        </a>
-       <span className="tooltip">Time Mgt System</span>
+       {/* <span className="tooltip"><i className='bx bx-chat'><FontAwesomeIcon icon={faCalendarTimes} color="white"/> </i>Time Mgt System</span> */}
      </li>
   
      <li>
        <a href="#">
-         <i className='bx bx-folder'><FontAwesomeIcon icon={faHandsHelping} color="white"/> </i>
-         <span className="links_name">Help Desk</span>
+        
+         <span className="links_name"><i className='bx bx-folder'><FontAwesomeIcon icon={faHandsHelping} color="white"/> </i>Help Desk</span>
        </a>
-       <span className="tooltip">Help Desk</span>
+       {/* <span className="tooltip"> <i className='bx bx-folder'><FontAwesomeIcon icon={faHandsHelping} color="white"/> </i>Help Desk</span> */}
      </li>
    
    
      <li>
-       <a href="#">
-         {/* <i className='bx bx-cog' ></i> */}
-         <i className='bx bx-cog'><FontAwesomeIcon icon={faCog} color="white"/> </i>
-         <span className="links_name">Setting</span>
+       <a href="#">      
+         <span className="links_name"><i className='bx bx-cog'><FontAwesomeIcon icon={faCog} color="white"/> </i>Settings</span>
        </a>
-       <span className="tooltip">Setting</span>
+       {/* <span className="tooltip"> <i className='bx bx-cog'><FontAwesomeIcon icon={faCog} color="white"/> </i>Setting</span> */}
      </li>
     
      <li className="profile">
-         <div className="profile-details">
-           {/* <img src="profile.jpg" alt="profileImg"> */}
-           <div className="name_job">
-             <div className="name">User1</div>
-             <div className="job">Web designer</div>
-           </div>
-         </div>
+        
          <Link to='/login'>
-         <i className='bx bx-log-out' id='log_out'><FontAwesomeIcon icon={faPowerOff} color="white"/> </i>   
+         <i className='bx bx-log-out' id='log_out'><FontAwesomeIcon icon={faPowerOff} color="white"/> </i> 
          </Link>
      </li>
  

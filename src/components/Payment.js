@@ -15,6 +15,7 @@ import { Modal } from "antd";
 import { Form, InputNumber, Select } from "antd";
 import { addNewInvoice, appendInvoice, initiateInvolvedInvoices } from "../reducers/InvoiceReducer";
 
+
 function Payment() {
 
   const [search, setSearch] = useState("");
@@ -155,6 +156,14 @@ function Payment() {
     setMode(value);
   };
 
+  // Dropdown List for Approval
+  const onChange = (value: string) => {
+    console.log(`selected ${value}`);
+  };
+  
+  const onSearchz = (value: string) => {
+    console.log('search:', value);
+  };
   return (
     <div>
       <Sidenav />
@@ -166,19 +175,14 @@ function Payment() {
             </div>
             <div className="details">
               <Row>
-                <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
-                  <div className="btn">
+                <Col >
+                {/* xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }} */}
+                  <div className="btn" style={{marginRight: '30px'}}>
                     <Space wrap>
-                      <Button type="primary" onClick={showModal}>
+                      <Button type="primary" onClick={showModal} >
                         <PlusOutlined /> Add Payment
                       </Button>
-                      {/* <Modal
-                        title="Add Payment"
-                        open={isModalOpen}
-                        onOk={handleOk}
-                        state={formData}
-                        onCancel={handleCancel}
-                      > */}
+                   
                         <Modal
                       open={isModalOpen}
                       title="Add payment"
@@ -210,6 +214,7 @@ function Payment() {
                           labelWrap
                         >
                           <Form.Item 
+                          
                           label="Authorizer"
                           name="authorizer"
                           rules={[
@@ -220,6 +225,8 @@ function Payment() {
                           ]}
                           >
                             <Input
+                            
+                            style={{marginLeft: '30px'}}
                               placeholder="Authorizer"
                               // onChange={handleChange}
                               // value={formData.authorizer}
@@ -236,12 +243,32 @@ function Payment() {
                             },
                           ]}
                            >
-                            <Input
-                              placeholder="Approver"
-                              // onChange={handleChange}
-                              // value={formData.approver}
-                              name="approver"
-                            />
+                           
+                           <Select
+                           style={{marginLeft: '30px'}}
+                            showSearch
+                            placeholder="Select Approver"
+                            optionFilterProp="children"
+                            onChange={onChange}
+                            onSearch={onSearch}
+                            filterOption={(input, option) =>
+                              (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                            }
+                            options={[
+                              {
+                                value: 'jack',
+                                label: 'Jack',
+                              },
+                              {
+                                value: 'lucy',
+                                label: 'Lucy',
+                              },
+                              {
+                                value: 'tom',
+                                label: 'Tom',
+                              },
+                            ]}
+                          />
                           </Form.Item>
                           <Form.Item 
                           label="Department"
@@ -254,6 +281,7 @@ function Payment() {
                           ]}
                           >
                             <Input
+                            style={{marginLeft: '30px'}}
                               placeholder="Department"
                               // onChange={handleChange}
                               // value={formData.department}
@@ -357,6 +385,7 @@ function Payment() {
                           ]}
                           >
                             <Input
+                            style={{marginLeft: '30px'}}
                               placeholder="Amount"
                               // onChange={handleChange}
                               // value={formData.amountInWords}
@@ -374,6 +403,7 @@ function Payment() {
                           ]}
                           >
                             <Input
+                              style={{marginLeft: '30px'}}
                               name="paymentTo"
                               placeholder="Payment to"
                               // onChange={handleChange}
@@ -391,6 +421,7 @@ function Payment() {
                           ]}
                           >
                             <Input
+                              style={{marginLeft: '30px'}}
                               placeholder="Description"
                               // onChange={handleChange}
                               // value={formData.description}
@@ -408,7 +439,8 @@ function Payment() {
                           ]}
                           >
                             <Select
-                              style={{ width: 120 }}
+                            style={{marginLeft: '30px'}}
+                              // style={{ width: 120 }}
                               onChange={handleSelectChange}
                               name="paymentMode"
                               options={[
@@ -420,6 +452,7 @@ function Payment() {
                           {mode === "TRANSFER" && (
                             <Form.Item label="Account Number" name="accountNumber">
                               <Input
+                              style={{marginLeft: '30px'}}
                                 placeholder="Account Number"
                                 value={mode}
                                 name="accountNumber"
@@ -431,13 +464,14 @@ function Payment() {
                     </Space>
                   </div>
                 </Col>
-                <Col
+                {/* <Col
                   xs={{ span: 11, offset: 1 }}
                   lg={{ span: 6, offset: 2 }}
-                ></Col>
+                ></Col> */}
                 <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
                   <Space direction="vertical">
                     <Search
+                      style={{marginLeft: '20em', paddingLeft: '14.5em'}}
                       placeholder="search for result"
                       onChange={(e) => setSearch(e.target.value)}
                       onSearch={onSearch}
@@ -450,7 +484,7 @@ function Payment() {
           </div>
         </div>
         <div className="card"></div>
-        <Card style={{ width: "100%" }}>
+        <Card style={{ width: "100%", marginTop: '10px' }}>
           <Table columns={columns} dataSource={invoices}></Table>
         </Card>
       </div>

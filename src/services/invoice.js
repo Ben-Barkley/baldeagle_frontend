@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { redirect } from 'react-router-dom'
 
-const baseUrl = 'http://localhost:8080/api/payment-voucher'
+const baseUrl = 'http://142.4.6.101:32771/api/payment-voucher'
 
 let token = null
 export const setToken = (newtoken) => {

@@ -6,9 +6,11 @@ import Sidenav from './Sidenav';
 import logo5 from '../images/logo5.png'
 import { useSelector } from 'react-redux';
 import ActionBtn from './actionBtn/ActionBtn';
+// comment section
+import { Button, Form, Mentions, Space } from 'antd';
 
 
-
+const { getMentions } = Mentions;
 
 function Invoice() {
   const params = useParams();
@@ -41,6 +43,31 @@ function Invoice() {
   }
 
   const action = findAction(invoiceItem.meta.status)
+
+  // comment section
+
+  const [form] = Form.useForm();
+
+  const onReset = () => {
+    form.resetFields();
+  };
+
+  const onFinish = async () => {
+    try {
+      const values = await form.validateFields();
+      console.log('Submit:', values);
+    } catch (errInfo) {
+      console.log('Error:', errInfo);
+    }
+  };
+
+  const checkMention = async (_: any, value: string) => {
+    const mentions = getMentions(value);
+
+    if (mentions.length < 2) {
+      throw new Error('More than one must be selected!');
+    }
+  };
 
   
   return (
@@ -154,8 +181,75 @@ function Invoice() {
                 </div>
                 </div>
               </div>
-              </div>
+              </div> 
               <div class="tm_note tm_text_center tm_font_style_normal">
+              <hr class="tm_mb15" />
+              {/* comment section */}
+              <h3>Comments</h3>
+              <Form form={form} layout="horizontal" onFinish={onFinish}>
+      {/* <Fomr.Item
+        name="coders"
+        label="Top coders"
+        labelCol={{ span: 6 }}
+        wrapperCol={{ span: 16 }}
+        rules={[{ validator: checkMention }]}
+      >
+        <Mentions
+          rows={1}
+          options={[
+            {
+              value: 'afc163',
+              label: 'afc163',
+            },
+            {
+              value: 'zombieJ',
+              label: 'zombieJ',
+            },
+            {
+              value: 'yesmeck',
+              label: 'yesmeck',
+            },
+          ]}
+        />
+      </Form.Item> */}
+      <Form.Item
+        name="Comments"
+        label="Comments"
+        labelCol={{ span: 6 }}
+        wrapperCol={{ span: 16 }}
+        rules={[{ required: true }]}
+      >
+        <Mentions
+          rows={3}
+          placeholder="You can use @ to ref user here"
+          options={[
+            {
+              value: 'James Wayne',
+              label: 'James Wayne',
+            },
+            {
+              value: 'Musa Ahmed',
+              label: 'Musa Ahmed',
+            },
+            {
+              value: 'Shade Adetoye',
+              label: 'Shade Adetoye',
+            },
+          ]}
+        />
+      </Form.Item>
+      <Form.Item wrapperCol={{ span: 14, offset: 6 }}>
+        <Space wrap>
+          <Button htmlType="submit" type="primary">
+            Submit
+          </Button>
+          <Button htmlType="button" onClick={onReset}>
+            Reset
+          </Button>
+        </Space>
+      </Form.Item>
+    </Form>
+              {/* end of comment */}
               <hr class="tm_mb15" />
               <p class="tm_mb2"><b class="tm_primary_color">Terms & Conditions:</b></p>
               {/* <p class="tm_m0">All claims relating to quantity or shipping errors shall be waived by Buyer unless made in writing to <br />Seller within thirty (30) days after delivery of goods to the address stated.</p> */}
