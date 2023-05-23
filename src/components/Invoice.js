@@ -187,37 +187,13 @@ function Invoice() {
               {/* comment section */}
               <h3>Comments</h3>
               <Form form={form} layout="horizontal" onFinish={onFinish}>
-      {/* <Fomr.Item
-        name="coders"
-        label="Top coders"
-        labelCol={{ span: 6 }}
-        wrapperCol={{ span: 16 }}
-        rules={[{ validator: checkMention }]}
-      >
-        <Mentions
-          rows={1}
-          options={[
-            {
-              value: 'afc163',
-              label: 'afc163',
-            },
-            {
-              value: 'zombieJ',
-              label: 'zombieJ',
-            },
-            {
-              value: 'yesmeck',
-              label: 'yesmeck',
-            },
-          ]}
-        />
-      </Form.Item> */}
+     
       <Form.Item
         name="Comments"
         label="Comments"
         labelCol={{ span: 6 }}
         wrapperCol={{ span: 16 }}
-        rules={[{ required: true }]}
+        rules={[{ required: false }]}
       >
         <Mentions
           rows={3}

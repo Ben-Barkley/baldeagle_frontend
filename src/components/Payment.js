@@ -164,6 +164,8 @@ function Payment() {
   const onSearchz = (value: string) => {
     console.log('search:', value);
   };
+
+
   return (
     <div>
       <Sidenav />
@@ -312,9 +314,10 @@ function Payment() {
                                         },
                                       ]}
                                     >
-                                      <Input placeholder="name of items" />
+                                      <Input placeholder="name of items" style={{margin: '5px 60px'}} />
                                     </Form.Item>
                                     <Form.Item
+                                    style={{marginTop: '20px'}}
                                       {...restField}
                                       name={[name, "price"]}
                                       rules={[
@@ -324,7 +327,7 @@ function Payment() {
                                         },
                                       ]}
                                     >
-                                      <InputNumber placeholder="price" />
+                                      <InputNumber placeholder="price"  />
                                     </Form.Item>
                                     <Form.Item
                                       {...restField}
@@ -345,7 +348,9 @@ function Payment() {
                                   </Space>
                                 ))}
                                 <Form.Item>
+                                
                                   <Button
+                                    style={{marginLeft: '7.5em'}}
                                     type="dashed"
                                     onClick={() => add()}
                                     block
